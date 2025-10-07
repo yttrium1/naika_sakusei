@@ -397,29 +397,29 @@
                 <label for="doctorSelect">担当医師:</label>
                 <select id="doctorSelect">
                     <option value="">選択してください</option>
-                        <option value="西中川">西中川</option>
-                        <option value="大場">大場</option>
-                        <option value="土方">土方</option>
-                        <option value="河野">河野</option>
-                        <option value="松村">松村</option>
-                        <option value="吉玉">吉玉</option>
-                        <option value="浅原">浅原</option>
-                        <option value="高亀">高亀</option>
-                        <option value="木下">木下</option>
-                        <option value="折原">折原</option>
-                        <option value="石井">石井</option>
-                        <option value="松坂">松坂</option>
-                        <option value="伊藤">伊藤</option>
-                        <option value="堀">堀</option>
-                        <option value="春日">春日</option>
-                        <option value="杉田">杉田</option>
-                        <option value="岡田">岡田</option>
-                        <option value="畠中">畠中</option>
-                        <option value="和田">和田</option>
-                        <option value="有上">有上</option>
-                        <option value="久次米">久次米</option>
-                        <option value="林">林</option>
-                        <option value="曹">曹</option>
+                    <option value="西中川">西中川</option>
+                    <option value="大場">大場</option>
+                    <option value="土方">土方</option>
+                    <option value="河野">河野</option>
+                    <option value="松村">松村</option>
+                    <option value="吉玉">吉玉</option>
+                    <option value="浅原">浅原</option>
+                    <option value="高亀">高亀</option>
+                    <option value="木下">木下</option>
+                    <option value="折原">折原</option>
+                    <option value="石井">石井</option>
+                    <option value="松坂">松坂</option>
+                    <option value="伊藤">伊藤</option>
+                    <option value="堀">堀</option>
+                    <option value="春日">春日</option>
+                    <option value="杉田">杉田</option>
+                    <option value="岡田">岡田</option>
+                    <option value="畠中">畠中</option>
+                    <option value="和田">和田</option>
+                    <option value="有上">有上</option>
+                    <option value="久次米">久次米</option>
+                    <option value="林">林</option>
+                    <option value="曹">曹</option>
                 </select>
             </div>
             
@@ -476,52 +476,52 @@
     let dutyAssignments = {};
     let holidays = {};
     
-    // 日本の祝日（2024年・2025年の例）
+    // 日本の祝日（2024年・2025年）
     const defaultHolidays = {
         '2024-1-1': '元日',
-            '2024-1-8': '成人の日',
-            '2024-2-11': '建国記念の日',
-            '2024-2-12': '振替休日',
-            '2024-2-23': '天皇誕生日',
-            '2024-3-20': '春分の日',
-            '2024-4-29': '昭和の日',
-            '2024-5-3': '憲法記念日',
-            '2024-5-4': 'みどりの日',
-            '2024-5-5': 'こどもの日',
-            '2024-5-6': '振替休日',
-            '2024-7-15': '海の日',
-            '2024-8-11': '山の日',
-            '2024-8-12': '振替休日',
-            '2024-9-16': '敬老の日',
-            '2024-9-22': '秋分の日',
-            '2024-9-23': '振替休日',
-            '2024-10-14': 'スポーツの日',
-            '2024-11-3': '文化の日',
-            '2024-11-4': '振替休日',
-            '2024-11-23': '勤労感謝の日',
-            '2025-1-1': '元日',
-            '2025-1-13': '成人の日',
-            '2025-2-11': '建国記念の日',
-            '2025-2-23': '天皇誕生日',
-            '2025-2-24': '振替休日',
-            '2025-3-20': '春分の日',
-            '2025-4-29': '昭和の日',
-            '2025-5-3': '憲法記念日',
-            '2025-5-4': 'みどりの日',
-            '2025-5-5': 'こどもの日',
-            '2025-5-6': '振替休日',
-            '2025-7-21': '海の日',
-            '2025-8-11': '山の日',
-            '2025-9-15': '敬老の日',
-            '2025-9-23': '秋分の日',
-            '2025-10-13': 'スポーツの日',
-            '2025-11-3': '文化の日',
-            '2025-11-23': '勤労感謝の日',
-            '2025-11-24': '振替休日',
-            '2025-12-28': '年末',
-            '2025-12-29': '年末',
-            '2025-12-30': '年末',
-            '2025-12-31': '年末'
+        '2024-1-8': '成人の日',
+        '2024-2-11': '建国記念の日',
+        '2024-2-12': '振替休日',
+        '2024-2-23': '天皇誕生日',
+        '2024-3-20': '春分の日',
+        '2024-4-29': '昭和の日',
+        '2024-5-3': '憲法記念日',
+        '2024-5-4': 'みどりの日',
+        '2024-5-5': 'こどもの日',
+        '2024-5-6': '振替休日',
+        '2024-7-15': '海の日',
+        '2024-8-11': '山の日',
+        '2024-8-12': '振替休日',
+        '2024-9-16': '敬老の日',
+        '2024-9-22': '秋分の日',
+        '2024-9-23': '振替休日',
+        '2024-10-14': 'スポーツの日',
+        '2024-11-3': '文化の日',
+        '2024-11-4': '振替休日',
+        '2024-11-23': '勤労感謝の日',
+        '2025-1-1': '元日',
+        '2025-1-13': '成人の日',
+        '2025-2-11': '建国記念の日',
+        '2025-2-23': '天皇誕生日',
+        '2025-2-24': '振替休日',
+        '2025-3-20': '春分の日',
+        '2025-4-29': '昭和の日',
+        '2025-5-3': '憲法記念日',
+        '2025-5-4': 'みどりの日',
+        '2025-5-5': 'こどもの日',
+        '2025-5-6': '振替休日',
+        '2025-7-21': '海の日',
+        '2025-8-11': '山の日',
+        '2025-9-15': '敬老の日',
+        '2025-9-23': '秋分の日',
+        '2025-10-13': 'スポーツの日',
+        '2025-11-3': '文化の日',
+        '2025-11-23': '勤労感謝の日',
+        '2025-11-24': '振替休日',
+        '2025-12-28': '年末',
+        '2025-12-29': '年末',
+        '2025-12-30': '年末',
+        '2025-12-31': '年末'
     };
     
     // 初期化時に祝日データをコピー
@@ -529,6 +529,7 @@
     
     // 初期化
     document.addEventListener('DOMContentLoaded', function() {
+        loadData(); // 保存されたデータを読み込み
         generateCalendar();
         updateMonthDisplay();
         
@@ -536,7 +537,132 @@
         document.getElementById('doctorSelect').addEventListener('change', function(e) {
             selectedDoctor = e.target.value;
         });
+        
+        // 自動保存の設定（データが変更されるたびに保存）
+        setInterval(autoSave, 5000); // 5秒ごとに自動保存
     });
+    
+    // データを保存
+    function saveData() {
+        const saveObject = {
+            dutyAssignments: dutyAssignments,
+            holidays: holidays,
+            currentMonth: currentDate.getMonth(),
+            currentYear: currentDate.getFullYear(),
+            lastSaved: new Date().toISOString()
+        };
+        
+        try {
+            localStorage.setItem('dutyCalendarData', JSON.stringify(saveObject));
+            return true;
+        } catch (e) {
+            console.error('データの保存に失敗しました:', e);
+            return false;
+        }
+    }
+    
+    // データを読み込み
+    function loadData() {
+        try {
+            const savedData = localStorage.getItem('dutyCalendarData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                dutyAssignments = data.dutyAssignments || {};
+                holidays = data.holidays || {...defaultHolidays};
+                
+                // 保存された月を表示
+                if (data.currentYear && data.currentMonth !== undefined) {
+                    currentDate = new Date(data.currentYear, data.currentMonth, 1);
+                }
+                
+                // 最終保存時刻を表示
+                if (data.lastSaved) {
+                    const lastSaved = new Date(data.lastSaved);
+                    console.log('データを復元しました（最終保存:', lastSaved.toLocaleString(), '）');
+                }
+                
+                return true;
+            }
+        } catch (e) {
+            console.error('データの読み込みに失敗しました:', e);
+        }
+        return false;
+    }
+    
+    // 自動保存
+    function autoSave() {
+        if (Object.keys(dutyAssignments).length > 0 || Object.keys(holidays).length !== Object.keys(defaultHolidays).length) {
+            if (saveData()) {
+                console.log('自動保存完了:', new Date().toLocaleTimeString());
+            }
+        }
+    }
+    
+    // データを手動保存
+    function manualSave() {
+        if (saveData()) {
+            alert('データを保存しました。');
+        } else {
+            alert('データの保存に失敗しました。');
+        }
+    }
+    
+    // データをエクスポート（バックアップ用）
+    function exportData() {
+        const saveObject = {
+            dutyAssignments: dutyAssignments,
+            holidays: holidays,
+            exportDate: new Date().toISOString()
+        };
+        
+        const dataStr = JSON.stringify(saveObject, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `当直データ_${currentDate.getFullYear()}年${currentDate.getMonth() + 1}月.json`;
+        link.click();
+        
+        URL.revokeObjectURL(url);
+    }
+    
+    // データをインポート（復元用）
+    function importData() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        
+        input.onchange = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    const data = JSON.parse(event.target.result);
+                    
+                    if (data.dutyAssignments) {
+                        dutyAssignments = data.dutyAssignments;
+                    }
+                    if (data.holidays) {
+                        holidays = data.holidays;
+                    }
+                    
+                    generateCalendar();
+                    saveData();
+                    alert('データをインポートしました。');
+                } catch (err) {
+                    alert('ファイルの読み込みに失敗しました。');
+                    console.error(err);
+                }
+            };
+            
+            reader.readAsText(file);
+        };
+        
+        input.click();
+    }
     
     function setDutyType(type) {
         selectedDutyType = type;
