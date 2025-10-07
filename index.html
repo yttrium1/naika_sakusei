@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -11,361 +12,376 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 10px;
-        }
-        
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 10px;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        overflow: hidden;
+    }
+    
+    .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .header h1 {
+        font-size: 1.8em;
+        margin-bottom: 8px;
+    }
+    
+    .header p {
+        font-size: 0.9em;
+        opacity: 0.95;
+    }
+    
+    .controls {
+        padding: 20px;
+        background: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .controls-row {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+    
+    .control-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    label {
+        font-weight: 600;
+        color: #495057;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    
+    select {
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 2px solid #dee2e6;
+        font-size: 14px;
+        background: white;
+        cursor: pointer;
+        min-width: 120px;
+    }
+    
+    select:hover {
+        border-color: #667eea;
+    }
+    
+    button {
+        padding: 8px 16px;
+        border-radius: 6px;
+        border: none;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .primary-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+    
+    .primary-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    
+    .duty-type-selector {
+        display: inline-flex;
+        gap: 5px;
+        background: white;
+        padding: 3px;
+        border-radius: 8px;
+        border: 2px solid #dee2e6;
+    }
+    
+    .duty-type-btn {
+        padding: 6px 12px;
+        background: transparent;
+        color: #667eea;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+    
+    .duty-type-btn.active {
+        background: #667eea;
+        color: white;
+    }
+    
+    .month-navigation {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .month-display {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #495057;
+        min-width: 120px;
+        text-align: center;
+    }
+    
+    .nav-button {
+        background: white;
+        color: #667eea;
+        border: 2px solid #667eea;
+        padding: 6px 12px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+    
+    .nav-button:hover {
+        background: #667eea;
+        color: white;
+    }
+    
+    .calendar-container {
+        padding: 20px;
+        overflow-x: auto;
+    }
+    
+    .calendar {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+    
+    .calendar th {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 12px 8px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 14px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    
+    .calendar td {
+        background: white;
+        border: 1px solid #dee2e6;
+        padding: 6px;
+        min-height: 80px;
+        height: 80px;
+        vertical-align: top;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    
+    .calendar td:hover:not(.other-month) {
+        background: #f8f9fa;
+        border-color: #667eea;
+        z-index: 5;
+    }
+    
+    .day-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+    
+    .day-number {
+        font-weight: bold;
+        color: #495057;
+        font-size: 14px;
+    }
+    
+    .holiday-marker {
+        background: #dc3545;
+        color: white;
+        padding: 1px 4px;
+        border-radius: 3px;
+        font-size: 9px;
+        font-weight: bold;
+    }
+    
+    .duty-slots {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+    
+    .duty-slot {
+        padding: 3px 5px;
+        border-radius: 4px;
+        font-size: 11px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .duty-slot.day-shift {
+        background: #d4edda;
+        border: 1px solid #28a745;
+        color: #155724;
+    }
+    
+    .duty-slot.day-shift.filled {
+        background: #28a745;
+        color: white;
+        font-weight: 600;
+    }
+    
+    .duty-slot.day-shift-extra {
+        background: #fff3cd;
+        border: 1px solid #ffc107;
+        color: #856404;
+    }
+    
+    .duty-slot.day-shift-extra.filled {
+        background: #ffc107;
+        color: #000;
+        font-weight: 600;
+    }
+    
+    .duty-slot.night-shift {
+        background: #d6e4ff;
+        border: 1px solid #4c63d2;
+        color: #1e3a8a;
+    }
+    
+    .duty-slot.night-shift.filled {
+        background: #4c63d2;
+        color: white;
+        font-weight: 600;
+    }
+    
+    .shift-label {
+        font-weight: bold;
+        margin-right: 2px;
+    }
+    
+    .other-month {
+        background: #f8f9fa;
+        opacity: 0.4;
+        pointer-events: none;
+    }
+    
+    .sunday {
+        background-color: #fff5f5;
+    }
+    
+    .saturday {
+        background-color: #f0f8ff;
+    }
+    
+    .holiday {
+        background-color: #fff0f0;
+    }
+    
+    .clear-button {
+        background: #dc3545;
+        color: white;
+    }
+    
+    .clear-button:hover {
+        background: #c82333;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+    }
+    
+    .export-button {
+        background: #28a745;
+        color: white;
+    }
+    
+    .export-button:hover {
+        background: #218838;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+    }
+    
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+    
+    .info-text {
+        font-size: 11px;
+        color: #6c757d;
+    }
+    
+    @media (max-width: 768px) {
         .header h1 {
-            font-size: 1.8em;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            font-size: 0.9em;
-            opacity: 0.95;
+            font-size: 1.4em;
         }
         
         .controls {
-            padding: 20px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
+            padding: 15px;
         }
         
         .controls-row {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-        
-        .control-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        label {
-            font-weight: 600;
-            color: #495057;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-        
-        select {
-            padding: 8px 12px;
-            border-radius: 6px;
-            border: 2px solid #dee2e6;
-            font-size: 14px;
-            background: white;
-            cursor: pointer;
-            min-width: 120px;
-        }
-        
-        select:hover {
-            border-color: #667eea;
-        }
-        
-        button {
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .primary-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .primary-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-        
-        .duty-type-selector {
-            display: inline-flex;
-            gap: 5px;
-            background: white;
-            padding: 3px;
-            border-radius: 8px;
-            border: 2px solid #dee2e6;
-        }
-        
-        .duty-type-btn {
-            padding: 6px 12px;
-            background: transparent;
-            color: #667eea;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-        
-        .duty-type-btn.active {
-            background: #667eea;
-            color: white;
-        }
-        
-        .month-navigation {
-            display: flex;
-            align-items: center;
             gap: 10px;
         }
         
-        .month-display {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #495057;
-            min-width: 120px;
-            text-align: center;
-        }
-        
-        .nav-button {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+        button {
             padding: 6px 12px;
-            font-size: 16px;
-            border-radius: 6px;
+            font-size: 13px;
         }
         
-        .nav-button:hover {
-            background: #667eea;
-            color: white;
-        }
-        
-        .calendar-container {
-            padding: 20px;
-            overflow-x: auto;
-        }
-        
-        .calendar {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
+        select {
+            min-width: 100px;
+            font-size: 13px;
         }
         
         .calendar th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 8px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 14px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            padding: 8px 4px;
+            font-size: 13px;
         }
         
         .calendar td {
-            background: white;
-            border: 1px solid #dee2e6;
-            padding: 6px;
-            min-height: 80px;
-            height: 80px;
-            vertical-align: top;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-        
-        .calendar td:hover:not(.other-month) {
-            background: #f8f9fa;
-            border-color: #667eea;
-            z-index: 5;
-        }
-        
-        .day-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4px;
-        }
-        
-        .day-number {
-            font-weight: bold;
-            color: #495057;
-            font-size: 14px;
-        }
-        
-        .holiday-marker {
-            background: #dc3545;
-            color: white;
-            padding: 1px 4px;
-            border-radius: 3px;
-            font-size: 9px;
-            font-weight: bold;
-        }
-        
-        .duty-slots {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
+            height: 70px;
+            min-height: 70px;
+            padding: 4px;
         }
         
         .duty-slot {
-            padding: 3px 5px;
-            border-radius: 4px;
-            font-size: 11px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 10px;
+            padding: 2px 4px;
         }
-        
-        .duty-slot.day-shift {
-            background: #d4edda;
-            border: 1px solid #28a745;
-            color: #155724;
-        }
-        
-        .duty-slot.day-shift.filled {
-            background: #28a745;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .duty-slot.night-shift {
-            background: #d6e4ff;
-            border: 1px solid #4c63d2;
-            color: #1e3a8a;
-        }
-        
-        .duty-slot.night-shift.filled {
-            background: #4c63d2;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .shift-label {
-            font-weight: bold;
-            margin-right: 2px;
-        }
-        
-        .other-month {
-            background: #f8f9fa;
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        
-        .sunday {
-            background-color: #fff5f5;
-        }
-        
-        .saturday {
-            background-color: #f0f8ff;
-        }
-        
-        .holiday {
-            background-color: #fff0f0;
-        }
-        
-        .clear-button {
-            background: #dc3545;
-            color: white;
-        }
-        
-        .clear-button:hover {
-            background: #c82333;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
-        }
-        
-        .export-button {
-            background: #28a745;
-            color: white;
-        }
-        
-        .export-button:hover {
-            background: #218838;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .checkbox-group input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-        
-        .info-text {
-            font-size: 11px;
-            color: #6c757d;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.4em;
-            }
-            
-            .controls {
-                padding: 15px;
-            }
-            
-            .controls-row {
-                gap: 10px;
-            }
-            
-            button {
-                padding: 6px 12px;
-                font-size: 13px;
-            }
-            
-            select {
-                min-width: 100px;
-                font-size: 13px;
-            }
-            
-            .calendar th {
-                padding: 8px 4px;
-                font-size: 13px;
-            }
-            
-            .calendar td {
-                height: 70px;
-                min-height: 70px;
-                padding: 4px;
-            }
-            
-            .duty-slot {
-                font-size: 10px;
-                padding: 2px 4px;
-            }
-        }
-    </style>
+    }
+</style>
+```
+
 </head>
 <body>
     <div class="container">
@@ -373,13 +389,14 @@
             <h1>内科当直カレンダー管理システム</h1>
             <p>担当医師と勤務種別を選択してカレンダーの日付をクリックして割り当ててください</p>
         </div>
-        
-        <div class="controls">
-            <div class="controls-row">
-                <div class="control-group">
-                    <label for="doctorSelect">担当医師:</label>
-                    <select id="doctorSelect">
-                        <option value="">選択してください</option>
+
+```
+    <div class="controls">
+        <div class="controls-row">
+            <div class="control-group">
+                <label for="doctorSelect">担当医師:</label>
+                <select id="doctorSelect">
+                    <option value="">選択してください</option>
                         <option value="西中川">西中川</option>
                         <option value="大場">大場</option>
                         <option value="土方">土方</option>
@@ -403,65 +420,65 @@
                         <option value="久次米">久次米</option>
                         <option value="林">林</option>
                         <option value="曹">曹</option>
-                    </select>
-                </div>
-                
-                <div class="control-group">
-                    <label>勤務種別:</label>
-                    <div class="duty-type-selector">
-                        <button class="duty-type-btn active" id="dayShiftBtn" onclick="setDutyType('day')">日直</button>
-                        <button class="duty-type-btn" id="nightShiftBtn" onclick="setDutyType('night')">当直</button>
-                    </div>
-                </div>
-                
-                <div class="checkbox-group">
-                    <input type="checkbox" id="holidayMode">
-                    <label for="holidayMode">祝日設定モード</label>
-                    <span class="info-text">（チェックして日付クリックで祝日設定）</span>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>勤務種別:</label>
+                <div class="duty-type-selector">
+                    <button class="duty-type-btn active" id="dayShiftBtn" onclick="setDutyType('day')">日直</button>
+                    <button class="duty-type-btn" id="nightShiftBtn" onclick="setDutyType('night')">当直</button>
                 </div>
             </div>
             
-            <div class="controls-row">
-                <button onclick="clearAll()" class="clear-button">すべてクリア</button>
-                <button onclick="exportToExcel()" class="export-button">Excel出力</button>
-                
-                <div class="month-navigation">
-                    <button class="nav-button" onclick="previousMonth()">◀</button>
-                    <div class="month-display" id="currentMonth"></div>
-                    <button class="nav-button" onclick="nextMonth()">▶</button>
-                </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="holidayMode">
+                <label for="holidayMode">祝日設定モード</label>
+                <span class="info-text">（チェックして日付クリックで祝日設定）</span>
             </div>
         </div>
         
-        <div class="calendar-container">
-            <table class="calendar" id="calendar">
-                <thead>
-                    <tr>
-                        <th>日</th>
-                        <th>月</th>
-                        <th>火</th>
-                        <th>水</th>
-                        <th>木</th>
-                        <th>金</th>
-                        <th>土</th>
-                    </tr>
-                </thead>
-                <tbody id="calendarBody">
-                </tbody>
-            </table>
+        <div class="controls-row">
+            <button onclick="clearAll()" class="clear-button">すべてクリア</button>
+            <button onclick="exportToExcel()" class="export-button">Excel出力</button>
+            
+            <div class="month-navigation">
+                <button class="nav-button" onclick="previousMonth()">◀</button>
+                <div class="month-display" id="currentMonth"></div>
+                <button class="nav-button" onclick="nextMonth()">▶</button>
+            </div>
         </div>
     </div>
     
-    <script>
-        let currentDate = new Date();
-        let selectedDoctor = '';
-        let selectedDutyType = 'day';
-        let dutyAssignments = {};
-        let holidays = {};
-        
-        // 日本の祝日（2024年・2025年の例）
-        const defaultHolidays = {
-            '2024-1-1': '元日',
+    <div class="calendar-container">
+        <table class="calendar" id="calendar">
+            <thead>
+                <tr>
+                    <th>日</th>
+                    <th>月</th>
+                    <th>火</th>
+                    <th>水</th>
+                    <th>木</th>
+                    <th>金</th>
+                    <th>土</th>
+                </tr>
+            </thead>
+            <tbody id="calendarBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    let currentDate = new Date();
+    let selectedDoctor = '';
+    let selectedDutyType = 'day';
+    let dutyAssignments = {};
+    let holidays = {};
+    
+    // 日本の祝日（2024年・2025年の例）
+    const defaultHolidays = {
+        '2024-1-1': '元日',
             '2024-1-8': '成人の日',
             '2024-2-11': '建国記念の日',
             '2024-2-12': '振替休日',
@@ -505,405 +522,456 @@
             '2025-12-29': '年末',
             '2025-12-30': '年末',
             '2025-12-31': '年末'
-      };
+    };
+    
+    // 初期化時に祝日データをコピー
+    holidays = {...defaultHolidays};
+    
+    // 初期化
+    document.addEventListener('DOMContentLoaded', function() {
+        generateCalendar();
+        updateMonthDisplay();
         
-        // 初期化時に祝日データをコピー
-        holidays = {...defaultHolidays};
-        
-        // 初期化
-        document.addEventListener('DOMContentLoaded', function() {
-            generateCalendar();
-            updateMonthDisplay();
-            
-            // 医師選択のイベントリスナー
-            document.getElementById('doctorSelect').addEventListener('change', function(e) {
-                selectedDoctor = e.target.value;
-            });
+        // 医師選択のイベントリスナー
+        document.getElementById('doctorSelect').addEventListener('change', function(e) {
+            selectedDoctor = e.target.value;
         });
+    });
+    
+    function setDutyType(type) {
+        selectedDutyType = type;
+        document.getElementById('dayShiftBtn').classList.toggle('active', type === 'day');
+        document.getElementById('nightShiftBtn').classList.toggle('active', type === 'night');
+    }
+    
+    function updateMonthDisplay() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth() + 1;
+        document.getElementById('currentMonth').textContent = `${year}年${month}月`;
+    }
+    
+    function generateCalendar() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const daysInPrevMonth = new Date(year, month, 0).getDate();
         
-        function setDutyType(type) {
-            selectedDutyType = type;
-            document.getElementById('dayShiftBtn').classList.toggle('active', type === 'day');
-            document.getElementById('nightShiftBtn').classList.toggle('active', type === 'night');
-        }
+        const calendarBody = document.getElementById('calendarBody');
+        calendarBody.innerHTML = '';
         
-        function updateMonthDisplay() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth() + 1;
-            document.getElementById('currentMonth').textContent = `${year}年${month}月`;
-        }
+        let date = 1;
+        let nextMonthDate = 1;
         
-        function generateCalendar() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-            const firstDay = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const daysInPrevMonth = new Date(year, month, 0).getDate();
+        // 6週間分のカレンダーを生成
+        for (let week = 0; week < 6; week++) {
+            const row = document.createElement('tr');
             
-            const calendarBody = document.getElementById('calendarBody');
-            calendarBody.innerHTML = '';
-            
-            let date = 1;
-            let nextMonthDate = 1;
-            
-            // 6週間分のカレンダーを生成
-            for (let week = 0; week < 6; week++) {
-                const row = document.createElement('tr');
+            for (let day = 0; day < 7; day++) {
+                const cell = document.createElement('td');
                 
-                for (let day = 0; day < 7; day++) {
-                    const cell = document.createElement('td');
+                if (week === 0 && day < firstDay) {
+                    // 前月の日付
+                    const prevDate = daysInPrevMonth - firstDay + day + 1;
+                    cell.className = 'other-month';
+                    cell.innerHTML = `<div class="day-header"><span class="day-number">${prevDate}</span></div>`;
+                } else if (date > daysInMonth) {
+                    // 翌月の日付
+                    cell.className = 'other-month';
+                    cell.innerHTML = `<div class="day-header"><span class="day-number">${nextMonthDate}</span></div>`;
+                    nextMonthDate++;
+                } else {
+                    // 当月の日付
+                    const currentDateKey = `${year}-${month + 1}-${date}`;
+                    const isWeekend = day === 0 || day === 6;
+                    const isHoliday = holidays[currentDateKey];
                     
-                    if (week === 0 && day < firstDay) {
-                        // 前月の日付
-                        const prevDate = daysInPrevMonth - firstDay + day + 1;
-                        cell.className = 'other-month';
-                        cell.innerHTML = `<div class="day-header"><span class="day-number">${prevDate}</span></div>`;
-                    } else if (date > daysInMonth) {
-                        // 翌月の日付
-                        cell.className = 'other-month';
-                        cell.innerHTML = `<div class="day-header"><span class="day-number">${nextMonthDate}</span></div>`;
-                        nextMonthDate++;
+                    // 基本クラス設定
+                    let className = '';
+                    if (day === 0) className = 'sunday';
+                    else if (day === 6) className = 'saturday';
+                    if (isHoliday) className += ' holiday';
+                    cell.className = className;
+                    
+                    // セルの内容を構築
+                    let cellHtml = '<div class="day-header">';
+                    cellHtml += `<span class="day-number">${date}</span>`;
+                    if (isHoliday) {
+                        cellHtml += '<span class="holiday-marker">祝</span>';
+                    }
+                    cellHtml += '</div>';
+                    cellHtml += '<div class="duty-slots">';
+                    
+                    if (isWeekend || isHoliday) {
+                        // 土日祝日は日直と当直の2つ（木下先生の場合は日直2人目も追加）
+                        const dayShiftKey = `${currentDateKey}-day`;
+                        const dayShiftExtraKey = `${currentDateKey}-day-extra`;
+                        const nightShiftKey = `${currentDateKey}-night`;
+                        
+                        const dayPerson = dutyAssignments[dayShiftKey] || '未定';
+                        const dayExtraPerson = dutyAssignments[dayShiftExtraKey] || '';
+                        const nightPerson = dutyAssignments[nightShiftKey] || '未定';
+                        
+                        cellHtml += `<div class="duty-slot day-shift ${dutyAssignments[dayShiftKey] ? 'filled' : ''}" data-date="${currentDateKey}" data-type="day">`;
+                        cellHtml += `<span class="shift-label">日直:</span>${dayPerson}`;
+                        cellHtml += '</div>';
+                        
+                        // 木下先生が日直の場合、もう1人の日直枠を表示
+                        if (dayPerson === '木下') {
+                            cellHtml += `<div class="duty-slot day-shift-extra ${dutyAssignments[dayShiftExtraKey] ? 'filled' : ''}" data-date="${currentDateKey}" data-type="day-extra">`;
+                            cellHtml += `<span class="shift-label">日直2:</span>${dayExtraPerson || '未定'}`;
+                            cellHtml += '</div>';
+                        }
+                        
+                        cellHtml += `<div class="duty-slot night-shift ${dutyAssignments[nightShiftKey] ? 'filled' : ''}" data-date="${currentDateKey}" data-type="night">`;
+                        cellHtml += `<span class="shift-label">当直:</span>${nightPerson}`;
+                        cellHtml += '</div>';
                     } else {
-                        // 当月の日付
-                        const currentDateKey = `${year}-${month + 1}-${date}`;
-                        const isWeekend = day === 0 || day === 6;
-                        const isHoliday = holidays[currentDateKey];
+                        // 平日は当直のみ
+                        const nightShiftKey = `${currentDateKey}-night`;
+                        const nightPerson = dutyAssignments[nightShiftKey] || '未定';
                         
-                        // 基本クラス設定
-                        let className = '';
-                        if (day === 0) className = 'sunday';
-                        else if (day === 6) className = 'saturday';
-                        if (isHoliday) className += ' holiday';
-                        cell.className = className;
-                        
-                        // セルの内容を構築
-                        let cellHtml = '<div class="day-header">';
-                        cellHtml += `<span class="day-number">${date}</span>`;
-                        if (isHoliday) {
-                            cellHtml += '<span class="holiday-marker">祝</span>';
-                        }
+                        cellHtml += `<div class="duty-slot night-shift ${dutyAssignments[nightShiftKey] ? 'filled' : ''}" data-date="${currentDateKey}" data-type="night">`;
+                        cellHtml += `<span class="shift-label">当直:</span>${nightPerson}`;
                         cellHtml += '</div>';
-                        cellHtml += '<div class="duty-slots">';
-                        
-                        if (isWeekend || isHoliday) {
-                            // 土日祝日は日直と当直の2つ
-                            const dayShiftKey = `${currentDateKey}-day`;
-                            const nightShiftKey = `${currentDateKey}-night`;
-                            
-                            const dayPerson = dutyAssignments[dayShiftKey] || '未定';
-                            const nightPerson = dutyAssignments[nightShiftKey] || '未定';
-                            
-                            cellHtml += `<div class="duty-slot day-shift ${dutyAssignments[dayShiftKey] ? 'filled' : ''}" data-date="${currentDateKey}" data-type="day">`;
-                            cellHtml += `<span class="shift-label">日直:</span>${dayPerson}`;
-                            cellHtml += '</div>';
-                            
-                            cellHtml += `<div class="duty-slot night-shift ${dutyAssignments[nightShiftKey] ? 'filled' : ''}" data-date="${currentDateKey}" data-type="night">`;
-                            cellHtml += `<span class="shift-label">当直:</span>${nightPerson}`;
-                            cellHtml += '</div>';
-                        } else {
-                            // 平日は当直のみ
-                            const nightShiftKey = `${currentDateKey}-night`;
-                            const nightPerson = dutyAssignments[nightShiftKey] || '未定';
-                            
-                            cellHtml += `<div class="duty-slot night-shift ${dutyAssignments[nightShiftKey] ? 'filled' : ''}" data-date="${currentDateKey}" data-type="night">`;
-                            cellHtml += `<span class="shift-label">当直:</span>${nightPerson}`;
-                            cellHtml += '</div>';
-                        }
-                        
-                        cellHtml += '</div>';
-                        cell.innerHTML = cellHtml;
-                        
-                        // クリックイベントの設定
-                        cell.addEventListener('click', function(e) {
-                            handleCellClick(e, currentDateKey);
-                        });
-                        
-                        date++;
                     }
                     
-                    row.appendChild(cell);
+                    cellHtml += '</div>';
+                    cell.innerHTML = cellHtml;
+                    
+                    // クリックイベントの設定
+                    cell.addEventListener('click', function(e) {
+                        handleCellClick(e, currentDateKey);
+                    });
+                    
+                    date++;
                 }
                 
-                calendarBody.appendChild(row);
-                
-                // 月の最後の日を超えて、次月の日付も7日以上表示したらループを終了
-                if (date > daysInMonth && nextMonthDate > 7) {
-                    break;
-                }
+                row.appendChild(cell);
+            }
+            
+            calendarBody.appendChild(row);
+            
+            // 月の最後の日を超えて、次月の日付も7日以上表示したらループを終了
+            if (date > daysInMonth && nextMonthDate > 7) {
+                break;
             }
         }
-        
-        function handleCellClick(e, dateKey) {
-            if (document.getElementById('holidayMode').checked) {
-                toggleHoliday(dateKey);
-            } else if (e.target.classList.contains('duty-slot')) {
-                const date = e.target.getAttribute('data-date');
-                const type = e.target.getAttribute('data-type');
-                assignDuty(date, type);
-            } else if (e.target.parentElement && e.target.parentElement.classList.contains('duty-slot')) {
-                const slot = e.target.parentElement;
-                const date = slot.getAttribute('data-date');
-                const type = slot.getAttribute('data-type');
-                assignDuty(date, type);
-            }
+    }
+    
+    function handleCellClick(e, dateKey) {
+        if (document.getElementById('holidayMode').checked) {
+            toggleHoliday(dateKey);
+        } else if (e.target.classList.contains('duty-slot')) {
+            const date = e.target.getAttribute('data-date');
+            const type = e.target.getAttribute('data-type');
+            assignDuty(date, type);
+        } else if (e.target.parentElement && e.target.parentElement.classList.contains('duty-slot')) {
+            const slot = e.target.parentElement;
+            const date = slot.getAttribute('data-date');
+            const type = slot.getAttribute('data-type');
+            assignDuty(date, type);
+        }
+    }
+    
+    function toggleHoliday(dateKey) {
+        if (holidays[dateKey]) {
+            delete holidays[dateKey];
+        } else {
+            holidays[dateKey] = '祝日';
+        }
+        generateCalendar();
+    }
+    
+    function assignDuty(dateKey, type) {
+        if (!selectedDoctor) {
+            alert('先に担当医師を選択してください');
+            return;
         }
         
-        function toggleHoliday(dateKey) {
-            if (holidays[dateKey]) {
-                delete holidays[dateKey];
-            } else {
-                holidays[dateKey] = '祝日';
-            }
-            generateCalendar();
-        }
+        const dutyKey = `${dateKey}-${type}`;
         
-        function assignDuty(dateKey, type) {
-            if (!selectedDoctor) {
-                alert('先に担当医師を選択してください');
+        // 日直2人目の枠の場合、木下先生が日直1に入っていない場合は警告
+        if (type === 'day-extra') {
+            const primaryDayKey = `${dateKey}-day`;
+            if (dutyAssignments[primaryDayKey] !== '木下') {
+                alert('日直2人目は木下先生が日直に入っている場合のみ登録できます。');
                 return;
             }
             
-            const dutyKey = `${dateKey}-${type}`;
-            
-            if (dutyAssignments[dutyKey] === selectedDoctor) {
-                // 同じ医師なら削除
-                delete dutyAssignments[dutyKey];
-            } else {
-                // 新規割り当てまたは上書き
-                dutyAssignments[dutyKey] = selectedDoctor;
-            }
-            
-            generateCalendar();
-        }
-        
-        function previousMonth() {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            updateMonthDisplay();
-            generateCalendar();
-        }
-        
-        function nextMonth() {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            updateMonthDisplay();
-            generateCalendar();
-        }
-        
-        function clearAll() {
-            if (confirm('すべての当番割り当てをクリアしますか？')) {
-                dutyAssignments = {};
-                generateCalendar();
+            // 木下先生を日直2に入れようとした場合は警告
+            if (selectedDoctor === '木下') {
+                alert('木下先生は既に日直1に登録されています。');
+                return;
             }
         }
         
-        function exportToExcel() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth() + 1;
-            const monthNames = ['1月', '2月', '3月', '4月', '5月', '6月', 
-                              '7月', '8月', '9月', '10月', '11月', '12月'];
-            
-            // ワークブックを作成
-            const wb = XLSX.utils.book_new();
-            
-            // データ配列を作成
-            const data = [];
-            
-            // タイトル行
-            data.push([`令和 ${year - 2018} 年　　${month} 月`]);
-            data.push([]); // 空行
-            
-            // 曜日ヘッダー行
-            data.push(['', '日', '', '', '', '月', '', '', '', '火', '', '', '', '水', '', '', '', '木', '', '', '', '金', '', '', '', '土', '']);
-            
-            // カレンダーデータを生成
-            const firstDay = new Date(year, month - 1, 1).getDay();
-            const daysInMonth = new Date(year, month, 0).getDate();
-            
-            // 日付を週ごとに配列に格納
-            const weeks = [];
-            let currentWeek = new Array(7).fill(null);
-            let date = 1;
-            
-            // 最初の週
-            for (let d = firstDay; d < 7 && date <= daysInMonth; d++) {
+        // 日直1から木下先生を削除する場合、日直2も削除
+        if (type === 'day' && dutyAssignments[dutyKey] === '木下' && selectedDoctor !== '木下') {
+            const extraKey = `${dateKey}-day-extra`;
+            if (dutyAssignments[extraKey]) {
+                if (confirm('木下先生を日直から外すと、日直2人目も削除されます。続行しますか？')) {
+                    delete dutyAssignments[extraKey];
+                } else {
+                    return;
+                }
+            }
+        }
+        
+        if (dutyAssignments[dutyKey] === selectedDoctor) {
+            // 同じ医師なら削除
+            delete dutyAssignments[dutyKey];
+        } else {
+            // 新規割り当てまたは上書き
+            dutyAssignments[dutyKey] = selectedDoctor;
+        }
+        
+        generateCalendar();
+    }
+    
+    function previousMonth() {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        updateMonthDisplay();
+        generateCalendar();
+    }
+    
+    function nextMonth() {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        updateMonthDisplay();
+        generateCalendar();
+    }
+    
+    function clearAll() {
+        if (confirm('すべての当番割り当てをクリアしますか？')) {
+            dutyAssignments = {};
+            generateCalendar();
+        }
+    }
+    
+    function exportToExcel() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth() + 1;
+        const monthNames = ['1月', '2月', '3月', '4月', '5月', '6月', 
+                          '7月', '8月', '9月', '10月', '11月', '12月'];
+        
+        // ワークブックを作成
+        const wb = XLSX.utils.book_new();
+        
+        // データ配列を作成
+        const data = [];
+        
+        // タイトル行
+        data.push([`令和 ${year - 2018} 年　　${month} 月`]);
+        data.push([]); // 空行
+        
+        // 曜日ヘッダー行
+        data.push(['', '日', '', '', '', '月', '', '', '', '火', '', '', '', '水', '', '', '', '木', '', '', '', '金', '', '', '', '土', '']);
+        
+        // カレンダーデータを生成
+        const firstDay = new Date(year, month - 1, 1).getDay();
+        const daysInMonth = new Date(year, month, 0).getDate();
+        
+        // 日付を週ごとに配列に格納
+        const weeks = [];
+        let currentWeek = new Array(7).fill(null);
+        let date = 1;
+        
+        // 最初の週
+        for (let d = firstDay; d < 7 && date <= daysInMonth; d++) {
+            currentWeek[d] = date++;
+        }
+        weeks.push([...currentWeek]);
+        
+        // 残りの週
+        while (date <= daysInMonth) {
+            currentWeek = new Array(7).fill(null);
+            for (let d = 0; d < 7 && date <= daysInMonth; d++) {
                 currentWeek[d] = date++;
             }
             weeks.push([...currentWeek]);
+        }
+        
+        // 各週のデータを出力
+        weeks.forEach((week) => {
+            const amRow = [''];
+            const pmRow = [''];
+            const blankRow = [''];
             
-            // 残りの週
-            while (date <= daysInMonth) {
-                currentWeek = new Array(7).fill(null);
-                for (let d = 0; d < 7 && date <= daysInMonth; d++) {
-                    currentWeek[d] = date++;
-                }
-                weeks.push([...currentWeek]);
-            }
-            
-            // 各週のデータを出力
-            weeks.forEach((week) => {
-                const amRow = [''];
-                const pmRow = [''];
-                const blankRow = [''];
+            for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+                const dayNum = week[dayOfWeek];
                 
-                for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
-                    const dayNum = week[dayOfWeek];
+                if (dayNum) {
+                    const dateKey = `${year}-${month}-${dayNum}`;
+                    const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+                    const isHoliday = holidays[dateKey];
                     
-                    if (dayNum) {
-                        const dateKey = `${year}-${month}-${dayNum}`;
-                        const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
-                        const isHoliday = holidays[dateKey];
+                    if (isWeekend || isHoliday) {
+                        // 土日祝日
+                        const dayShift = dutyAssignments[`${dateKey}-day`] || '';
+                        const dayShiftExtra = dutyAssignments[`${dateKey}-day-extra`] || '';
+                        const nightShift = dutyAssignments[`${dateKey}-night`] || '';
                         
-                        if (isWeekend || isHoliday) {
-                            // 土日祝日
-                            const dayShift = dutyAssignments[`${dateKey}-day`] || '';
-                            const nightShift = dutyAssignments[`${dateKey}-night`] || '';
-                            
-                            amRow.push(dayNum, 'am', dayShift, '');
-                            pmRow.push('日', 'pm', nightShift, '');
+                        amRow.push(dayNum, 'am', dayShift, '');
+                        
+                        // 木下先生が日直の場合、2人目も追記
+                        if (dayShift === '木下' && dayShiftExtra) {
+                            pmRow.push('日', 'am2', dayShiftExtra, '');
                         } else {
-                            // 平日
-                            const nightShift = dutyAssignments[`${dateKey}-night`] || '';
-                            
-                            amRow.push(dayNum, 'am', '', '');
-                            pmRow.push('', 'pm', nightShift, '');
+                            pmRow.push('日', 'pm', nightShift, '');
+                        }
+                        
+                        // 当直が別の行になる場合（木下先生が日直の場合）
+                        if (dayShift === '木下' && dayShiftExtra) {
+                            // 次の行に当直を追加するため、blankRowを使用
+                            blankRow.push('', 'pm', nightShift, '');
                         }
                     } else {
-                        // 空のセル
-                        amRow.push('', 'am', '', '');
-                        pmRow.push('', 'pm', '', '');
+                        // 平日
+                        const nightShift = dutyAssignments[`${dateKey}-night`] || '';
+                        
+                        amRow.push(dayNum, 'am', '', '');
+                        pmRow.push('', 'pm', nightShift, '');
                     }
-                    
-                    blankRow.push('', '', '', '');
+                } else {
+                    // 空のセル
+                    amRow.push('', 'am', '', '');
+                    pmRow.push('', 'pm', '', '');
                 }
                 
-                data.push(amRow);
-                data.push(pmRow);
-                data.push(blankRow); // 週の区切り
-            });
-            
-            // 最下部の説明
-            data.push([]);
-            data.push(['', '', '', '', '', '', '', '', '* 平日・日・祭日  am8:30 ～pm 5:00']);
-            
-            // ワークシートを作成
-            const ws = XLSX.utils.aoa_to_sheet(data);
-            
-            // 基本的な書式設定
-            if (!ws['!cols']) ws['!cols'] = [];
-            
-            // 列幅の設定（より具体的に）
-            for (let i = 0; i <= 30; i++) {
-                if (i === 0) {
-                    ws['!cols'][i] = { wch: 2 };
-                } else if ((i - 1) % 4 === 0) {
-                    // 日付列
-                    ws['!cols'][i] = { wch: 4 };
-                } else if ((i - 1) % 4 === 1) {
-                    // am/pm列
-                    ws['!cols'][i] = { wch: 4 };
-                } else if ((i - 1) % 4 === 2) {
-                    // 医師名列
-                    ws['!cols'][i] = { wch: 10 };
-                } else {
-                    // スペース列
-                    ws['!cols'][i] = { wch: 2 };
-                }
+                blankRow.push('', '', '', '');
             }
             
-            // 範囲を取得
-            const range = XLSX.utils.decode_range(ws['!ref']);
-            
-            // セルに基本的なスタイルを適用（XLSXの基本機能で可能な範囲）
-            for (let R = 0; R <= range.e.r; R++) {
-                for (let C = 0; C <= range.e.c; C++) {
-                    const cell_address = XLSX.utils.encode_cell({ r: R, c: C });
-                    
-                    if (!ws[cell_address]) {
-                        ws[cell_address] = { t: 's', v: '' };
-                    }
-                    
-                    // タイトル行
-                    if (R === 0 && C === 0) {
-                        if (!ws[cell_address].s) ws[cell_address].s = {};
-                        ws[cell_address].s.font = { bold: true, sz: 14 };
-                        ws[cell_address].s.alignment = { horizontal: 'center' };
-                    }
-                    
-                    // 曜日ヘッダー
-                    if (R === 2) {
-                        if ([1, 5, 9, 13, 17, 21, 25].includes(C)) {
-                            if (!ws[cell_address].s) ws[cell_address].s = {};
-                            ws[cell_address].s.font = { bold: true, sz: 12 };
-                            ws[cell_address].s.alignment = { horizontal: 'center' };
-                            ws[cell_address].s.fill = { fgColor: { rgb: "DDDDDD" } };
-                        }
-                    }
-                    
-                    // データ行の処理
-                    if (R >= 3) {
-                        const rowInPattern = (R - 3) % 3;
-                        
-                        if (rowInPattern < 2) { // am/pm行
-                            // 日付セル
-                            if ((C - 1) % 4 === 0 && C > 0) {
-                                if (ws[cell_address].v && ws[cell_address].v !== '') {
-                                    if (!ws[cell_address].s) ws[cell_address].s = {};
-                                    ws[cell_address].s.font = { bold: true };
-                                    ws[cell_address].s.alignment = { horizontal: 'center' };
-                                }
-                            }
-                            
-                            // am/pmセル
-                            if ((C - 2) % 4 === 0 && C > 0) {
-                                if (!ws[cell_address].s) ws[cell_address].s = {};
-                                ws[cell_address].s.alignment = { horizontal: 'center' };
-                                ws[cell_address].s.font = { sz: 10 };
-                            }
-                            
-                            // 医師名セル
-                            if ((C - 3) % 4 === 0 && C > 0) {
-                                if (ws[cell_address].v && ws[cell_address].v !== '') {
-                                    if (!ws[cell_address].s) ws[cell_address].s = {};
-                                    ws[cell_address].s.font = { bold: true };
-                                    ws[cell_address].s.alignment = { horizontal: 'center' };
-                                    ws[cell_address].s.fill = { fgColor: { rgb: "FFFF99" } };
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            // セルの結合
-            if (!ws['!merges']) ws['!merges'] = [];
-            
-            // タイトル行を結合
-            ws['!merges'].push({
-                s: { r: 0, c: 0 },
-                e: { r: 0, c: 28 }
-            });
-            
-            // 説明文を結合
-            const lastRowIdx = data.length - 1;
-            ws['!merges'].push({
-                s: { r: lastRowIdx, c: 8 },
-                e: { r: lastRowIdx, c: 20 }
-            });
-            
-            // ワークブックにシートを追加
-            XLSX.utils.book_append_sheet(wb, ws, `${year}年${month}月`);
-            
-            // ファイル名
-            const fileName = `当直表_${year}年${monthNames[month - 1]}.xlsx`;
-            
-            // Excelファイルとして保存
-            try {
-                XLSX.writeFile(wb, fileName);
-                alert(`エクセルファイル「${fileName}」を作成しました。`);
-            } catch (error) {
-                console.error('エクセル出力エラー:', error);
-                alert('エクセル出力中にエラーが発生しました。');
+            data.push(amRow);
+            data.push(pmRow);
+            data.push(blankRow); // 週の区切り
+        });
+        
+        // 最下部の説明
+        data.push([]);
+        data.push(['', '', '', '', '', '', '', '', '* 平日・日・祭日  am8:30 ～pm 5:00']);
+        
+        // ワークシートを作成
+        const ws = XLSX.utils.aoa_to_sheet(data);
+        
+        // 基本的な書式設定
+        if (!ws['!cols']) ws['!cols'] = [];
+        
+        // 列幅の設定（より具体的に）
+        for (let i = 0; i <= 30; i++) {
+            if (i === 0) {
+                ws['!cols'][i] = { wch: 2 };
+            } else if ((i - 1) % 4 === 0) {
+                // 日付列
+                ws['!cols'][i] = { wch: 4 };
+            } else if ((i - 1) % 4 === 1) {
+                // am/pm列
+                ws['!cols'][i] = { wch: 4 };
+            } else if ((i - 1) % 4 === 2) {
+                // 医師名列
+                ws['!cols'][i] = { wch: 10 };
+            } else {
+                // スペース列
+                ws['!cols'][i] = { wch: 2 };
             }
         }
-    </script>
+        
+        // 範囲を取得
+        const range = XLSX.utils.decode_range(ws['!ref']);
+        
+        // セルに基本的なスタイルを適用（XLSXの基本機能で可能な範囲）
+        for (let R = 0; R <= range.e.r; R++) {
+            for (let C = 0; C <= range.e.c; C++) {
+                const cell_address = XLSX.utils.encode_cell({ r: R, c: C });
+                
+                if (!ws[cell_address]) {
+                    ws[cell_address] = { t: 's', v: '' };
+                }
+                
+                // タイトル行
+                if (R === 0 && C === 0) {
+                    if (!ws[cell_address].s) ws[cell_address].s = {};
+                    ws[cell_address].s.font = { bold: true, sz: 14 };
+                    ws[cell_address].s.alignment = { horizontal: 'center' };
+                }
+                
+                // 曜日ヘッダー
+                if (R === 2) {
+                    if ([1, 5, 9, 13, 17, 21, 25].includes(C)) {
+                        if (!ws[cell_address].s) ws[cell_address].s = {};
+                        ws[cell_address].s.font = { bold: true, sz: 12 };
+                        ws[cell_address].s.alignment = { horizontal: 'center' };
+                        ws[cell_address].s.fill = { fgColor: { rgb: "DDDDDD" } };
+                    }
+                }
+                
+                // データ行の処理
+                if (R >= 3) {
+                    const rowInPattern = (R - 3) % 3;
+                    
+                    if (rowInPattern < 2) { // am/pm行
+                        // 日付セル
+                        if ((C - 1) % 4 === 0 && C > 0) {
+                            if (ws[cell_address].v && ws[cell_address].v !== '') {
+                                if (!ws[cell_address].s) ws[cell_address].s = {};
+                                ws[cell_address].s.font = { bold: true };
+                                ws[cell_address].s.alignment = { horizontal: 'center' };
+                            }
+                        }
+                        
+                        // am/pmセル
+                        if ((C - 2) % 4 === 0 && C > 0) {
+                            if (!ws[cell_address].s) ws[cell_address].s = {};
+                            ws[cell_address].s.alignment = { horizontal: 'center' };
+                            ws[cell_address].s.font = { sz: 10 };
+                        }
+                        
+                        // 医師名セル
+                        if ((C - 3) % 4 === 0 && C > 0) {
+                            if (ws[cell_address].v && ws[cell_address].v !== '') {
+                                if (!ws[cell_address].s) ws[cell_address].s = {};
+                                ws[cell_address].s.font = { bold: true };
+                                ws[cell_address].s.alignment = { horizontal: 'center' };
+                                ws[cell_address].s.fill = { fgColor: { rgb: "FFFF99" } };
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // セルの結合
+        if (!ws['!merges']) ws['!merges'] = [];
+        
+        // タイトル行を結合
+        ws['!merges'].push({
+            s: { r: 0, c: 0 },
+            e: { r: 0, c: 28 }
+        });
+        
+        // 説明文を結合
+        const lastRowIdx = data.length - 1;
+        ws['!merges'].push({
+            s: { r: lastRowIdx, c: 8 },
+            e: { r: lastRowIdx, c: 20 }
+        });
+        
+        // ワークブックにシートを追加
+        XLSX.utils.book_append_sheet(wb, ws, `${year}年${month}月`);
+        
+        // ファイル名
+        const fileName = `当直表_${year}年${monthNames[month - 1]}.xlsx`;
+        
+        // Excelファイルとして保存
+        try {
+            XLSX.writeFile(wb, fileName);
+            alert(`エクセルファイル「${fileName}」を作成しました。`);
+        } catch (error) {
+            console.error('エクセル出力エラー:', error);
+            alert('エクセル出力中にエラーが発生しました。');
+        }
+    }
+</script>
+```
+
 </body>
 </html>
