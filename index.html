@@ -22,7 +22,7 @@
     }
     
     .container {
-        max-width: 100%;
+        max-width: 1200px;
         margin: 0 auto;
         background: white;
         border-radius: 15px;
@@ -188,9 +188,9 @@
     .calendar td {
         background: white;
         border: 1px solid #dee2e6;
-        padding: 6px;
-        min-height: 80px;
-        height: 80px;
+        padding: 8px;
+        min-height: 100px;
+        height: 100px;
         vertical-align: top;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -232,14 +232,23 @@
     }
     
     .duty-slot {
-        padding: 3px 5px;
+        padding: 5px 8px;
         border-radius: 4px;
-        font-size: 11px;
+        font-size: 14px;
         cursor: pointer;
         transition: all 0.2s ease;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: center;
+        font-weight: 600;
+    }
+    
+    .duty-slot.empty {
+        font-size: 11px;
+        font-weight: normal;
+        font-style: italic;
+        opacity: 0.6;
     }
     
     .duty-slot.day-shift {
@@ -251,7 +260,8 @@
     .duty-slot.day-shift.filled {
         background: #28a745;
         color: white;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 15px;
     }
     
     .duty-slot.day-shift-extra {
@@ -263,7 +273,8 @@
     .duty-slot.day-shift-extra.filled {
         background: #ffc107;
         color: #000;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 15px;
     }
     
     .duty-slot.night-shift {
@@ -275,7 +286,8 @@
     .duty-slot.night-shift.filled {
         background: #4c63d2;
         color: white;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 15px;
     }
     
     .shift-label {
@@ -369,14 +381,18 @@
         }
         
         .calendar td {
-            height: 70px;
-            min-height: 70px;
-            padding: 4px;
+            height: 90px;
+            min-height: 90px;
+            padding: 6px;
         }
         
         .duty-slot {
-            font-size: 10px;
-            padding: 2px 4px;
+            font-size: 12px;
+            padding: 4px 6px;
+        }
+        
+        .duty-slot.filled {
+            font-size: 13px;
         }
     }
 </style>
